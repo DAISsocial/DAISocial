@@ -38,7 +38,7 @@ class User
     #self.update_attribute(:name, "Adminaa")
 
   
-    #max = TwitterApi.trending_tweets.to_h
+    
 
     if ago > self.last_sign_in_at
       UserMailer.welcome_email(self.email,self.last_sign_in_at).deliver_now
