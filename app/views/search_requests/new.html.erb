@@ -22,26 +22,29 @@
     </div>
     <div id="map" style="height: 440px; border: 1px solid #AAA;">
     <script type="text/javascript">
-      var map = L.map( 'map', {
-          center: [50.45007183381818, 30.5240535736084],
-          zoom: 13
-      });
-      L.tileLayer( 'http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="http://osm.org/copyright" title="OpenStreetMap" target="_blank">OpenStreetMap</a> contributors | Tiles Courtesy of <a href="http://www.mapquest.com/" title="MapQuest" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png" width="16" height="16">',
-          subdomains: ['otile1','otile2','otile3','otile4']
-      }).addTo( map );
-      var clickCircle;
-      function onMapClick(e) {
-        var radius = $("#radiusSet").val() * 1000;
-        if (clickCircle != undefined) {
-          map.removeLayer(clickCircle);
-        };
-        clickCircle = L.circle(e.latlng,radius).addTo(map);
-        $('#lat').val(e.latlng.lat);
-        $('#lng').val(e.latlng.lng);
-        $('#radius').val(radius);
-      }
-      map.on('click', onMapClick);
+        // set up the map
+        map = new L.Map('map');
+
+        // create the tile layer with correct attribution
+        var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+        var osm = new L.TileLayer(osmUrl, {minZoom: 2, attribution: osmAttrib});
+
+        map.setView(new L.LatLng(50.45007183381818, 30.5240535736084), 13);
+        map.addLayer(osm);
+        var clickCircle;
+        function onMapClick(e) {
+          var radius = $("#radiusSet").val() * 1000;
+          if (clickCircle != undefined) {
+              map.removeLayer(clickCircle);
+          };
+          clickCircle = new L.Circle(e.latlng, radius);
+          map.addLayer(clickCircle);
+          $('#lat').val(e.latlng.lat);
+          $('#lng').val(e.latlng.lng);
+          $('#radius').val(radius);
+        }
+        map.on('click', onMapClick);
 
     </script>
     </div>

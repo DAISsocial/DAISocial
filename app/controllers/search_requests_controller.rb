@@ -9,7 +9,7 @@ class SearchRequestsController < ApplicationController
 		params[:search_request][:center][1] = params[:search_request][:center][1].to_f
 		params[:search_request][:radius] = params[:search_request][:radius].to_i/100
 		current_user.spend_service("search_request")
-		@result = HTTParty.post("http://192.168.1.102:8080/users/#{current_user.id}/search_request", 
+		@result = HTTParty.post("http://0.0.0.0:8080/users/#{current_user.id}/search_request",
 		{ 
 		    :body => params[:search_request].to_json,
 		    :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'}

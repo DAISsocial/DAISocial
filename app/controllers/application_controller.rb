@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
     end
     I18n.locale = l
   end
+
   def after_sign_in_path
     
   end
@@ -27,6 +28,6 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :email, :password, :password_confirmation) }
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
   end
 end
