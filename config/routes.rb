@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   end
   root :to => 'static_pages#landing'
   get 'help' => 'static_pages#help', as: :pdf
+  get 'reports_page' => 'static_pages#reports', as: :reports
+  get 'static_pages/download_docx/:id', to: 'static_pages#download_docx', as: 'load_docx'
   get 'home' => 'static_pages#home'
   resources :request_types, only: [:new, :create]
   resources :search_requests, only: [:new, :create]

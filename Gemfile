@@ -19,6 +19,7 @@ gem 'jquery-turbolinks'
 # Add devise + mongoid
 gem 'mongoid'
 gem 'bson_ext'
+gem 'mongoid-grid_fs'
 
 gem 'devise'
 

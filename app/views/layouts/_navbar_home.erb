@@ -27,12 +27,13 @@
                           </li>
                           <li class="divider"></li>
                           <li>
-                              <a href="#"><i class="fa fa-fw fa-power-off"></i> <%= link_to "Sign out", destroy_user_session_url, :method => :delete %></a>
+                              <a href="#"><i class="fa fa-fw fa-power-off"></i>
+                                <%= link_to "Sign out", destroy_user_session_url, :method => :delete %></a>
                           </li>
                       </ul>
                   </li>
                 <% else %>
-                        <li><%= link_to t('home_page.navbar.sign_up') ,new_user_registration_url %></li>
+                        <li><%= link_to t('home_page.navbar.sign_up'), new_user_registration_url %></li>
                         <li><%= link_to t('home_page.navbar.sign_in'), "#", class:'sign-in-btn', data: {toggle: "modal", backdrop: 'static', target: ".bs-example-modal-sm"} %></li>
                 <% end %>
               </ul>
@@ -46,7 +47,7 @@
                         <a href="#"><i class="fa fa-fw fa-bar-chart-o"></i> Order service</a>
                     </li> -->
                     <li>
-                      <%= link_to "Search history" , pdf_path %>
+                      <%= link_to "Search history", reports_path %>
                     </li>
                     <li>
                         <%= link_to "Search on area" , new_search_request_url %>
